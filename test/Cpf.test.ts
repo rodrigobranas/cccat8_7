@@ -1,6 +1,7 @@
 import Cpf from "../src/Cpf";
 
 const validCpfs = [
+	"317.153.361-86",
 	"198.454.187-08",
 	"147.085.437-60"
 ];
