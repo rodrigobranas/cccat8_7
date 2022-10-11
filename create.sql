@@ -1,3 +1,9 @@
+drop table if exists ccca.order_item;
+drop table if exists ccca.order;
+drop table if exists ccca.coupon;
+drop table if exists ccca.item;
+drop table if exists ccca.zipcode;
+
 create table ccca.item (
 	id_item serial primary key,
 	description text,
@@ -22,3 +28,29 @@ create table ccca.zipcode (
 
 insert into ccca.zipcode (code, street, neighborhood, lat, long) values ('88015600', 'Rua Almirante Lamego', 'Centro', -27.5945, -48.5477);
 insert into ccca.zipcode (code, street, neighborhood, lat, long) values ('22060030', 'Rua Aires Saldanha', 'Copacabana', -22.9129, -43.2003);
+
+create table ccca.order (
+	id_order serial primary key,
+	coupon_code text,
+	coupon_percentage integer,
+	code text,
+	cpf text,
+	issue_date timestamp,
+	freight numeric,
+	sequence integer,
+	total numeric
+);
+
+create table ccca.order_item (
+	id_order integer references ccca.order (id_order),
+	id_item integer references ccca.item (id_item),
+	price numeric,
+	quantity integer,
+	primary key (id_order, id_item)
+);
+
+create table ccca.coupon (
+	code text primary key,
+	percentage integer,
+	expire_date timestamp
+);

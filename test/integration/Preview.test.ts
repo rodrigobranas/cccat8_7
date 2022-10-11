@@ -7,7 +7,7 @@ import Zipcode from "../../src/domain/entity/Zipcode";
 import ItemRepository from "../../src/domain/repository/ItemRepository";
 import CouponRepositoryMemory from "../../src/infra/repository/memory/CouponRepositoryMemory";
 import ItemRepositoryMemory from "../../src/infra/repository/memory/ItemRepositoryMemory";
-import ZipcodeRepositoryMemory from "../../src/infra/repository/ZipcodeRepositoryMemory";
+import ZipcodeRepositoryMemory from "../../src/infra/repository/memory/ZipcodeRepositoryMemory";
 
 let preview: Preview;
 

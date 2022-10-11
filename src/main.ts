@@ -11,8 +11,8 @@ import MemoryRepositoryFactory from "./infra/factory/MemoryRepositoryFactory";
 import ExpressAdapter from "./infra/http/ExpressAdapter";
 import HapiHttp from "./infra/http/HapiAdapters";
 import CouponRepositoryMemory from "./infra/repository/memory/CouponRepositoryMemory";
-import ItemRepositoryDatabase from "./infra/repository/memory/database/ItemRepositoryDatabase";
-import ZipcodeRepositoryDatabase from "./infra/repository/memory/database/ZipcodeRepositoryDatabase";
+import ItemRepositoryDatabase from "./infra/repository/database/ItemRepositoryDatabase";
+import ZipcodeRepositoryDatabase from "./infra/repository/database/ZipcodeRepositoryDatabase";
 import ItemRepositoryMemory from "./infra/repository/memory/ItemRepositoryMemory";
 import OrderRepositoryMemory from "./infra/repository/memory/OrderRepositoryMemory";
 
