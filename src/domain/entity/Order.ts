@@ -21,7 +21,6 @@ export default class Order {
 	addItem (item: Item, quantity: number) {
 		if (this.orderItems.some((orderItem) => orderItem.idItem === item.idItem)) throw new Error("Duplicated item");
 		this.orderItems.push(new OrderItem(item.idItem, item.price, quantity));
-		this.freight += FreightCalculator.calculate(item) * quantity;
 	}
 
 	addCoupon (coupon: Coupon) {
