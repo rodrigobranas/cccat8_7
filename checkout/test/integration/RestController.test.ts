@@ -28,14 +28,3 @@ test("Deve testar o preview com desconto pela API", async function () {
 	const preview = response.data;
 	expect(preview.total).toBe(5132);
 });
-
-test("Deve testar o simulateFreight pela API", async function () {
-	const input = {
-		orderItems: [
-			{ idItem: 1, quantity: 1 }
-		]
-	};
-	const response = await axios.post("http://localhost:3000/simulateFreight", input);
-	const freight = response.data;
-	expect(freight).toBe(30);
-});

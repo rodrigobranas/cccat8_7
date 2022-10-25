@@ -1,6 +1,5 @@
 import Coupon from "./Coupon";
 import Cpf from "./Cpf";
-import FreightCalculator from "./FreightCalculator";
 import Item from "./Item";
 import OrderCode from "./OrderCode";
 import OrderCoupon from "./OrderCoupon";

@@ -18,7 +18,7 @@ export default class CalculateFreight {
 		for (const orderItem of input.orderItems) {
 			freight += FreightCalculator.calculate(orderItem.volume, orderItem.density, distance) * orderItem.quantity;
 		}
-		console.log(freight);
+		console.log(new Date(), "CalculateFreight");
 		return freight;
 	}
 }

@@ -1,16 +1,13 @@
 import CalculateFreightGateway from "../../src/application/gateway/CalculateFreightGateway";
-import Preview from "../../src/application/Preview";
-import Coord from "../../src/domain/entity/Coord";
+import Preview from "../../src/application/usecase/Preview";
 import Coupon from "../../src/domain/entity/Coupon";
 import Dimension from "../../src/domain/entity/Dimension";
 import Item from "../../src/domain/entity/Item";
-import Zipcode from "../../src/domain/entity/Zipcode";
 import ItemRepository from "../../src/domain/repository/ItemRepository";
 import CalculateFreightHttpGateway from "../../src/infra/gateway/CalculateFreightHttpGateway";
 import GetItemHttpGateway from "../../src/infra/gateway/GetItemHttpGateway";
 import CouponRepositoryMemory from "../../src/infra/repository/memory/CouponRepositoryMemory";
 import ItemRepositoryMemory from "../../src/infra/repository/memory/ItemRepositoryMemory";
-import ZipcodeRepositoryMemory from "../../src/infra/repository/memory/ZipcodeRepositoryMemory";
 
 let preview: Preview;
 

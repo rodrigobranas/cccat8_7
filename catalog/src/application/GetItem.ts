@@ -7,7 +7,7 @@ export default class GetItem {
 
 	async execute (idItem: number): Promise<Output> {
 		const item = await this.itemRepository.getItem(idItem);
-		console.log(item);
+		console.log(new Date(), "GetItem");
 		return {
 			idItem: item.idItem,
 			description: item.description,
