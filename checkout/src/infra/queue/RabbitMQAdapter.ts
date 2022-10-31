@@ -21,7 +21,7 @@ export default class RabbitMQAdapter implements Queue {
 		await channel.assertQueue(queueName, { durable: true });
 		await channel.bindQueue(queueName, exchangeName, "");
 		await channel.consume(queueName, async function (msg: any) {
-			await callback(msg.content.toString());
+			await callback(JSON.parse(msg.content.toString()));
 			channel.ack(msg);
 		});
 	}

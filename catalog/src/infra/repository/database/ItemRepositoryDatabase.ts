@@ -13,6 +13,15 @@ export default class ItemRepositoryDatabase implements ItemRepository {
 		return new Item(itemData.id_item, itemData.description, parseFloat(itemData.price), new Dimension(itemData.width, itemData.height, itemData.length, itemData.weight));
 	}
 
+	async getItems(): Promise<Item[]> {
+		const itemsData = await this.connection.query("select * from ccca.item", []);
+		const items: Item[] = [];
+		for (const itemData of itemsData) {
+			items.push(new Item(itemData.id_item, itemData.description, parseFloat(itemData.price), new Dimension(itemData.width, itemData.height, itemData.length, itemData.weight)));
+		}
+		return items;
+	}
+
 	save(item: Item): Promise<void> {
 		throw new Error("Method not implemented.");
 	}

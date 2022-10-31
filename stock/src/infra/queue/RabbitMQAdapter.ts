@@ -17,6 +17,7 @@ export default class RabbitMQAdapter implements Queue {
 
 	async on(exchangeName: string, queueName: string, callback: Function): Promise<void> {
 		const channel = await this.connection.createChannel();
+		await channel.assertExchange(exchangeName, "direct", { durable: true });
 		await channel.assertQueue(queueName, { durable: true });
 		await channel.bindQueue(queueName, exchangeName, "");
 		await channel.consume(queueName, async function (msg: any) {

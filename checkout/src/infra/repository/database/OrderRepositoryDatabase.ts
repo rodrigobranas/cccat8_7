@@ -13,7 +13,7 @@ export default class OrderRepositoryDatabase implements OrderRepository {
 	}
 
 	async save(order: Order): Promise<void> {
-		const [orderData] = await this.connection.query("insert into ccca.order (code, cpf, issue_date, sequence, freight) values ($1, $2, $3, $4, $5) returning *", [order.getCode(), order.cpf.value, order.date, order.sequence, order.freight]);
+		const [orderData] = await this.connection.query("insert into ccca.order (code, cpf, issue_date, sequence, freight, coupon_code, coupon_percentage, total) values ($1, $2, $3, $4, $5, $6, $7, $8) returning *", [order.getCode(), order.cpf.value, order.date, order.sequence, order.freight, order.coupon?.code, order.coupon?.percentage, order.getTotal()]);
 		for (const orderItem of order.orderItems) {
 			await this.connection.query("insert into ccca.order_item (id_item, id_order, price, quantity) values ($1, $2, $3, $4)", [orderItem.idItem, orderData.id_order, orderItem.price, orderItem.quantity]);
 		}
