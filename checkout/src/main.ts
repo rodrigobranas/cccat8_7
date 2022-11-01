@@ -21,6 +21,7 @@ import DecrementStockHttpGateway from "./infra/gateway/DecrementStockHttpGateway
 import RabbitMQAdapter from "./infra/queue/RabbitMQAdapter";
 import QueueController from "./infra/controller/QueueController";
 import ValidateCoupon from "./application/usecase/ValidateCoupon";
+import GetOrdersByCpfQuery from "./application/query/GetOrdersByCpfQuery";
 
 async function init () {
 	const connection = new PgPromiseAdapter();
@@ -32,11 +33,12 @@ async function init () {
 	const queue = new RabbitMQAdapter();
 	await queue.connect();
 	const checkout = new Checkout(repositoryFactory, getItemGateway, calculateFreightGateway, decrementStockGateway, queue);
-	const getOrdersByCpf = new GetOrdersByCpf(repositoryFactory.createOrderRepository());
+	const getOrdersByCpf = new GetOrdersByCpf(repositoryFactory.createOrderRepository(), getItemGateway);
+	const getOrdersByCpfQuery = new GetOrdersByCpfQuery(connection);
 	const validateCoupon = new ValidateCoupon(repositoryFactory.createCouponRepository());
 	const httpServer = new ExpressAdapter();
 	// const httpServer = new HapiHttp();
-	new RestController(httpServer, preview, checkout, getOrdersByCpf, validateCoupon, queue);
+	new RestController(httpServer, preview, checkout, getOrdersByCpf, validateCoupon, getOrdersByCpfQuery, queue);
 	new QueueController(queue, checkout);
 	httpServer.listen(3000);
 }
